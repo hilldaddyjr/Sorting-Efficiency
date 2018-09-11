@@ -1,15 +1,65 @@
 #include "Sort.h"
 
+void Sort::BogoSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
+
+    void * ele1;
+    void * ele2;
+    bool sorted = true;
+
+    for(size_t i = 0; i < nmemb - 1; i++) {
+            
+        ele1 = (void*) ((char*) base + i * size);
+        ele2 = (void*) ((char*) base + (i + 1) * size);
+
+        if((*compare)(ele1, ele2) >= 0) {
+            sorted = false;
+            break;
+        }
+    }
+
+    char * temp = new char[size];
+
+    while(!sorted) {
+
+        sorted = true;
+
+        for(size_t i = 0; i < nmemb; i++) {
+
+            ele1 = (void*) ((char*) base + i * size);
+            ele2 = (void*) ((char*) base + (rand() % nmemb) * size);
+
+                memcpy(temp, ele1, size);
+                memcpy(ele1, ele2, size);               
+                memcpy(ele2, temp, size);
+
+        }
+
+        for(size_t i = 0; i < nmemb - 1; i++) {
+            
+            ele1 = (void*) ((char*) base + i * size);
+            ele2 = (void*) ((char*) base + (i + 1) * size);
+
+            if((*compare)(ele1, ele2) >= 0) {
+              sorted = false;
+              break;
+            }
+        }
+    }
+    delete[] temp;
+}
+
 void Sort::BubbleSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
 
+    void * ele1;
+    void * ele2;
     char * temp = new char[size];
     bool swapped = true;
 
     for(size_t i = 0; i < nmemb - 1; i++) {
         for(size_t j = 0; j < nmemb - i - 1; j++) {
 
-            void * ele1 = (void*) ((char*) base + j * size);
-            void * ele2 = (void*) ((char*) base + (j + 1) * size);
+            ele1 = (void*) ((char*) base + j * size);
+            ele2 = (void*) ((char*) base + (j + 1) * size);
 
             if((*compare)(ele1, ele2) < 0) {
                 swapped = true;
@@ -28,12 +78,14 @@ void Sort::BubbleSort(void * base, size_t nmemb, size_t size, int (*compare)(con
 
 void Sort::InsertionSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
 
-char * temp = new char[size];
+    void * ele1;
+    void * ele2; 
+    char * temp = new char[size];
 
     for(size_t i = 0; i < nmemb; i++) {
         for(size_t j = i; j > 0; j--) {
-            void * ele1 = (void*) ((char*) base + j * size);
-            void * ele2 = (void*) ((char*) base + (j - 1) * size);
+            ele1 = (void*) ((char*) base + j * size);
+            ele2 = (void*) ((char*) base + (j - 1) * size);
 
             if((*compare)(ele1, ele2) < 0) {
                 memcpy(temp, ele1, size);
@@ -47,12 +99,14 @@ char * temp = new char[size];
 
 void Sort::SelectionSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
 
+    void * ele1;
+    void * ele2; 
     char * temp = new char[size];
 
     for(size_t i = 0; i < nmemb - 1; i++) {
         for(size_t j = i + 1; j < nmemb; j++) {
-            void * ele1 = (void*) ((char*) base + i * size);
-            void * ele2 = (void*) ((char*) base + j * size);
+            ele1 = (void*) ((char*) base + i * size);
+            ele2 = (void*) ((char*) base + j * size);
 
             if((*compare)(ele1, ele2) >= 0) {
                 memcpy(temp, ele1, size);

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <iostream>
 
-#define stdlength 10
+#define stdlength 8
 int main() {
 
     int array [stdlength];
@@ -18,7 +18,7 @@ int main() {
     std::cout << std::endl;
 
     //Sorting Function here
-    Sort::BubbleSort(&array, stdlength, sizeof(int), Debug::compare);
+    Sort::BogoSort(&array, stdlength, sizeof(int), Debug::compare);
 
     std::cout << std::endl;
 
@@ -32,6 +32,6 @@ int main() {
 }
 
 int Debug::compare(const void * x, const void * y) {
-    std::cout << *(const int *) x - *(const int *) y;
+    //std::cout << *(const int *) x - *(const int *) y;
     return *(const int *) x - *(const int *) y;
 }
