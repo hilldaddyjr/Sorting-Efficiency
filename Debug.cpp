@@ -5,7 +5,7 @@
 #define stdlength 10
 int main() {
 
-    int array [stdlength]; 
+    int array [stdlength];
 
     for(int i = 0; i < stdlength; i++) {
         array[i] = rand() % 10;
@@ -18,7 +18,7 @@ int main() {
     std::cout << std::endl;
 
     //Sorting Function here
-    Sort::InsertionSort(&array, stdlength, sizeof(int), Debug::compare);
+    Sort::BubbleSort(&array, stdlength, sizeof(int), Debug::compare);
 
     std::cout << std::endl;
 

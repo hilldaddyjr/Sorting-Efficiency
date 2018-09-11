@@ -1,5 +1,31 @@
 #include "Sort.h"
 
+void Sort::BubbleSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
+
+    char * temp = new char[size];
+    bool swapped = true;
+
+    for(size_t i = 0; i < nmemb - 1; i++) {
+        for(size_t j = 0; j < nmemb - i - 1; j++) {
+
+            void * ele1 = (void*) ((char*) base + j * size);
+            void * ele2 = (void*) ((char*) base + (j + 1) * size);
+
+            if((*compare)(ele1, ele2) < 0) {
+                swapped = true;
+                memcpy(temp, ele1, size);
+                memcpy(ele1, ele2, size);               
+                memcpy(ele2, temp, size);
+            }
+        }
+        if(!swapped) {
+            return;
+        }
+        swapped = false;
+    }
+    delete[] temp;
+}
+
 void Sort::InsertionSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
 
 char * temp = new char[size];
