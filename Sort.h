@@ -5,7 +5,9 @@
 #include <algorithm>
 
 namespace Sort {
-   
+    
+    bool isSorted(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *));
+
     void BogoSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *));
 
     void BubbleSort(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *));
