@@ -1,6 +1,6 @@
 #include "Sort.h"
 
-bool Sort::isSorted(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
+bool Sort::IsSorted(void * base, size_t nmemb, size_t size, int (*compare)(const void *, const void *)) {
     
     void * ele1;
     void * ele2;
@@ -22,7 +22,7 @@ void Sort::BogoSort(void * base, size_t nmemb, size_t size, int (*compare)(const
     void * ele1;
     void * ele2;
 
-    if(isSorted(base, nmemb, size, compare)) {
+    if(IsSorted(base, nmemb, size, compare)) {
         return;
     }
 
@@ -41,7 +41,7 @@ void Sort::BogoSort(void * base, size_t nmemb, size_t size, int (*compare)(const
 
         }
 
-        if(isSorted(base, nmemb, size, compare)) {
+        if(IsSorted(base, nmemb, size, compare)) {
             break;
         }          
     }
